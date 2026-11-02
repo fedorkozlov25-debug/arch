@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Транзакции</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .card h2 {
+            text-align: center;
+            margin: 0 0 20px 0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        th, td {
+            padding: 10px 8px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            color: #666;
+            font-weight: normal;
+            background: #fafafa;
+        }
+        .empty {
+            text-align: center;
+            color: #999;
+            padding: 30px 0;
+        }
+        .btn-back {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            text-align: center;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+        .btn-back:hover { background: #565e64; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Транзакции</h2>
+
+        <table>
+            <thead>
+                <tr><th>Дата</th><th>Сумма</th><th>Описание</th><th>Баланс</th></tr>
+            </thead>
+            <tbody>
+                {% if transactions %}
+                    {% for t in transactions %}
+                    <tr>
+                        <td>{{ t.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
+                        <td>
+                            {% if t.type == 'deposit' %}+{% else %}−{% endif %}{{ t.amount }}
+                            {% if t.cost %}<br><small style="color:#999">списано: {{ t.cost }}</small>{% endif %}
+                        </td>
+                        <td>{{ t.description or '—' }}</td>
+                        <td>{{ t.balance_after }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr><td colspan="4" class="empty">Пока нет транзакций</td></tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <a href="/profile" class="btn-back">← Назад в профиль</a>
+    </div>
+</body>
+</html>
