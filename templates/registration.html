@@ -5,80 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация</title>
     <style>
-        /* Те же стили, что и на странице входа */
+        /* Современные стили интерфейса в едином стиле со страницей входа */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1e38 100%); /* Глубокий темный градиент */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px 0;
+            box-sizing: border-box;
         }
 
+        /* Карточка в стиле стеклянного морфизма */
         .card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 40px 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             width: 100%;
-            max-width: 350px;
+            max-width: 380px;
+            box-sizing: border-box;
         }
 
+        /* Заголовок */
         .card h2 {
             text-align: center;
-            margin-bottom: 20px;
-            color: #333;
+            margin: 0 0 30px 0;
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
+        /* Поля ввода */
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            color: #666;
+            margin-bottom: 8px;
+            color: #94a3b8; /* Спокойный серый */
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .form-group input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 12px 16px;
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 15px;
+            transition: all 0.25s ease;
             box-sizing: border-box;
         }
 
+        .form-group input:focus {
+            outline: none;
+            border-color: #38bdf8; /* Неоново-голубой фокус */
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Плейсхолдеры */
+        .form-group input::placeholder {
+            color: #475569;
+        }
+
+        /* Кнопка регистрации (зеленая цветовая гамма) */
         button {
             width: 100%;
-            padding: 10px;
-            background-color: #28a745; /* Зеленый цвет для регистрации (отличие) */
-            color: white;
+            padding: 14px;
+            background: linear-gradient(90deg, #10b981 0%, #047857 100%); /* Изумрудный градиент */
+            color: #ffffff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
-            transition: background 0.3s;
-            margin-top: 10px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         }
 
         button:hover {
-            background-color: #218838;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+            background: linear-gradient(90deg, #34d399 0%, #10b981 100%);
         }
 
-        /* Дополнительный стиль для ссылки внизу */
+        button:active {
+            transform: translateY(1px);
+        }
+
+        /* Ссылка перехода на авторизацию */
         .switch-link {
             text-align: center;
-            margin-top: 15px;
+            margin-top: 25px;
+            color: #94a3b8;
             font-size: 14px;
         }
 
         .switch-link a {
-            color: #007bff;
+            color: #38bdf8;
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            margin-left: 4px;
         }
 
         .switch-link a:hover {
+            color: #7dd3fc;
             text-decoration: underline;
         }
     </style>
